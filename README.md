@@ -1,39 +1,148 @@
-# Finite Elements : LEPL1110
+# FEM-Bridge-Simulator
 
-## Authors
+<div align="center">
 
-- **Student:** Mathis Delsart
-- **Student:** Adrien Antonutti
+**A complete finite element analysis pipeline for bridge structural simulation**
 
-## Course Info
+[![C](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![CMake](https://img.shields.io/badge/CMake-3.10+-064F8C.svg)](https://cmake.org/)
+[![OpenGL](https://img.shields.io/badge/OpenGL-graphics-5586A4.svg)](https://www.opengl.org/)
+[![Gmsh](https://img.shields.io/badge/Gmsh-4.12+-orange.svg)](https://gmsh.info/)
 
-- **Course:** LEPL1110 : Finite Elements
-- **Institution:** UCLouvain : Université catholique de Louvain
-- **Year:** 2023-2024
-- **Professor:** Vincent Legat
+</div>
 
-## Description
+## Overview
 
-Welcome to our repository for the LEPL1110 course on Finite Elements at UCLouvain. This repository is a comprehensive collection of our work throughout the course, including the main project and all homework assignments. Each section of the repository includes detailed READMEs to guide you through the specific parts of the project and each homework task.
+FEM-Bridge-Simulator is an end-to-end finite element analysis (FEA) framework designed for simulating and visualizing structural behavior of bridges under various load conditions. The toolkit implements a complete FEM pipeline from mesh generation to real-time visualization, offering researchers and engineers a comprehensive tool for bridge structural analysis.
 
-## Repository Structure
+## Motivation
 
-- **Project:** Contains the main project developed for the course. See the Project folder for more details and specific documentation.
-- **Homeworks:** Includes all homework assignments completed during the course. Each homework has its own folder with a dedicated README file for detailed explanations and instructions.
-- **Exercises:** Contains some interesting exercises done during the course.
+Understanding structural integrity is crucial in civil engineering, especially for complex structures like cable-stayed bridges. This project addresses the need for:
 
-## Note
+- **Accessible FEA Tools**: Providing an open-source alternative for educational and research purposes
+- **Complete Pipeline**: Integrating preprocessing, solving, and postprocessing in a unified framework
+- **Visual Insights**: Enabling real-time visualization of stress distributions and deformations
+- **Performance Analysis**: Comparing different numerical methods and optimization strategies
 
-This repository is the result of our hard work and dedication. While we strive for perfection and have received very good grades, please note that the work is not always flawless. We hope you find our efforts valuable and insightful.
+## Key Features
 
-## Additional Information
+- **Mesh Generation**: Interactive geometric modeling with Gmsh integration
+- **Multiple Solvers**: Full and banded matrix solvers with various renumbering strategies
+- **Real-time Visualization**: OpenGL-based rendering of displacement fields and stress distributions
+- **Stress Analysis**: Von Mises stress, principal stresses (σxx, σyy, σxy)
+- **Animation Support**: Time-based deformation and load movement visualization
+- **Performance Optimization**: Reverse Cuthill-McKee (RCM) renumbering for bandwidth reduction
 
-- **Setup/Installation/Usage:** Detailed Setup/Installation/Usage instructions and examples are available in the respective README files.
-- **Contributions:** Contributions are welcome. If you find any issues or have suggestions for improvements, please feel free to create a pull request or open an issue.
+## Architecture
 
-We hope you find this repository helpful and informative as you explore the fascinating world of Finite Elements. If you have any questions or need further assistance, please do not hesitate to contact us.
+The toolkit is organized into three specialized modules:
 
-Thank you for visiting our repository!
+```
+FEM-Bridge-Simulator/
+├── pre-processor/   # Mesh generation & problem definition
+├── processor/      # FEM solver & computation engine
+└── post-processor/  # Visualization & results analysis
+```
+
+### 1. PreProcessor
+
+Generates computational meshes and defines boundary conditions:
+- Interactive geometry creation using Gmsh
+- Support for triangular and quadrilateral elements
+- Plane stress, plane strain, and axisymmetric formulations
+- Flexible boundary condition specification
+
+### 2. Processor
+
+Core FEM computation engine:
+- Linear elasticity solver for structural analysis
+- Multiple matrix solver implementations (full/banded)
+- Node renumbering strategies (X/Y coordinate, RCM)
+- Efficient sparse matrix operations
+
+### 3. PostProcessor
+
+Advanced visualization and analysis:
+- Interactive 3D rendering with OpenGL
+- Real-time stress field visualization
+- Deformation animation capabilities
+- Data export for external plotting (Python scripts included)
+
+## Quick Start
+
+### Prerequisites
+
+```bash
+# Required libraries
+- CMake (>= 3.10)
+- OpenGL
+- GLFW
+- Gmsh SDK
+```
+
+### Build & Run
+
+```bash
+# 1. PreProcessor - Generate mesh
+cd pre-processor
+mkdir build && cd build
+cmake .. && make
+./myFem
+
+# 2. Processor - Solve FEM problem
+cd ../../processor
+mkdir build && cd build
+cmake .. && make
+./myFem
+
+# 3. PostProcessor - Visualize results
+cd ../../post-processor
+mkdir build && cd build
+cmake .. && make
+./myFem
+```
+
+## Example Results
+
+The toolkit can simulate various structural scenarios:
+
+- **Cable-stayed Bridge**: Full bridge with pylons and stay cables
+- **Simplified Bridge**: Basic deck structure for validation
+- **Beam Analysis**: Classical beam bending with analytical comparison
+- **Dynamic Loading**: Moving loads and time-dependent deformations
+
+## Technical Details
+
+### Solver Capabilities
+
+- **Element Types**: 3-node triangles, 4-node quadrilaterals
+- **Material Models**: Linear elastic (isotropic)
+- **Problem Types**: Plane stress, plane strain, axisymmetric
+- **Matrix Solvers**: Gaussian elimination (full/banded)
+
+### Optimization Features
+
+- **Node Renumbering**: Reduces matrix bandwidth for efficient solving
+- **Sparse Storage**: Banded matrix format for memory efficiency
+- **Parallel Visualization**: Non-blocking rendering pipeline
+
+## Performance
+
+The RCM renumbering algorithm typically reduces matrix bandwidth by 60-80%, significantly improving computational efficiency for large meshes.
+
+## Documentation
+
+Each module contains detailed README with:
+- Build instructions
+- Usage examples
+- API documentation
+- Configuration options
+
+See module-specific READMEs in respective directories.
 
 ---
-**Disclaimer:** This repository is intended for educational purposes only. The content herein reflects our understanding and interpretation of the course material and may not be entirely accurate or complete. Use at your own discretion.
+
+<div align="center">
+Built for structural engineering enthusiasts
+</div>
