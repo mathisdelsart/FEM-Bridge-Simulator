@@ -143,6 +143,41 @@ See module-specific READMEs in respective directories.
 
 ---
 
+## Author
+
 <div align="center">
-Built for structural engineering enthusiasts
+
+<table>
+  <tr>
+    <td width="180" align="left">
+      <img src="https://img.shields.io/badge/GitHub-mathisdelsart-black?logo=github" valign="middle"/>
+    </td>
+    <td align="left">
+      <strong>Mathis DELSART</strong>
+    </td>
+  </tr>
+  <tr>
+    <td width="180" align="left">
+      <img src="https://img.shields.io/badge/GitHub-beMang-black?logo=github" valign="middle"/>
+    </td>
+    <td align="left">
+      <strong>Adrien ANTONUTTI</strong>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+## License
+
+This project is developed for academic purposes as part of university coursework.
+
+---
+
+<div align="center">
+
+**Built for LEPL1110 - Eléments finis @ UCLouvain** (Université catholique de Louvain).
+
+*Built for structural engineering enthusiasts*
+
 </div>
