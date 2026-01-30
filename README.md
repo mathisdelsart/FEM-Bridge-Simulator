@@ -41,7 +41,7 @@ The toolkit is organized into three specialized modules:
 ```
 FEM-Bridge-Simulator/
 ├── pre-processor/   # Mesh generation & problem definition
-├── processor/      # FEM solver & computation engine
+├── processor/       # FEM solver & computation engine
 └── post-processor/  # Visualization & results analysis
 ```
 
@@ -68,6 +68,19 @@ Advanced visualization and analysis:
 - Real-time stress field visualization
 - Deformation animation capabilities
 - Data export for external plotting (Python scripts included)
+
+## Preliminary Work
+
+The `homeworks/` directory contains foundational implementations developed prior to the main project. These modules explore individual FEM concepts and serve as building blocks for the complete bridge simulator:
+
+| Module | Description |
+|--------|-------------|
+| `GeoMesh` | Mesh generation and geometric modeling basics |
+| `Integrate` | Numerical integration schemes for FEM |
+| `BandSolver` | Banded matrix solver implementation |
+| `Poisson` | 2D Poisson equation solver |
+| `LinearElasticity` | Core elasticity formulation |
+| `LinearElasticityForces` | Extended elasticity with force handling |
 
 ## Quick Start
 
